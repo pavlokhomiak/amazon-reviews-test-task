@@ -11,11 +11,10 @@ public class CustomFileReader implements ReadFileService {
     @Override
     public List<String[]> readFile(String filePath) {
         try {
-            CSVReader csvReader = new CSVReader(
-                    new FileReader(filePath));
+            CSVReader csvReader = new CSVReader(new FileReader(filePath));
             List<String[]> allData = new ArrayList<>();
             String[] nextRecord;
-            while((nextRecord = csvReader.readNext()) != null) {
+            while ((nextRecord = csvReader.readNext()) != null) {
                 allData.add(nextRecord);
             }
             return allData;
