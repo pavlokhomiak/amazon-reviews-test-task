@@ -6,30 +6,35 @@ import java.util.stream.IntStream;
 import mate.academy.boot.hellobootdemo.models.ReviewDto;
 
 public class CsvFileParser {
+    private static final int REVIEW_ID_INDEX = 0;
+    private static final int PRODUCT_ID_INDEX = 1;
+    private static final int USER_ID_INDEX = 2;
+    private static final int PROFILE_NAME_INDEX = 3;
+    private static final int HELPFULNESS_NUMERATOR_INDEX = 4;
+    private static final int HELPFULNESS_DENOMINATOR_INDEX = 5;
+    private static final int SCORE_INDEX = 6;
+    private static final int TIME_INDEX = 7;
+    private static final int SUMMARY_INDEX = 8;
+    private static final int TEXT_INDEX = 9;
 
-    public List<ReviewDto> parseDataToDto(List<String> dataList) {
+    public List<ReviewDto> parseDataToDto(List<String[]> dataList) {
         return IntStream.range(1, dataList.size())
                 .mapToObj(i -> parseToDto(dataList.get(i)))
                 .collect(Collectors.toList());
     }
 
-    private ReviewDto parseToDto(String data) {
-        String[] dataArray = data.split(",");
-        StringBuilder sb = new StringBuilder();
-        for (int i = 9; i < dataArray.length; i++) {
-            sb.append(dataArray[i] + ",");
-        }
+    private ReviewDto parseToDto(String[] data) {
         ReviewDto dto = new ReviewDto();
-        dto.setReviewId(Long.parseLong(dataArray[0]));
-        dto.setProductId(dataArray[1]);
-        dto.setUserId(dataArray[2]);
-        dto.setProfileName(dataArray[3]);
-        dto.setHelpfulnessNumerator(Integer.parseInt(dataArray[4]));
-        dto.setHelpfulnessDenominator(Integer.parseInt(dataArray[5]));
-        dto.setScore(Integer.parseInt(dataArray[6]));
-        dto.setTime(Long.parseLong(dataArray[7]));
-        dto.setSummary(dataArray[8]);
-        dto.setText(sb.substring(0, sb.length() - 1));
+        dto.setReviewId(Long.parseLong(data[REVIEW_ID_INDEX]));
+        dto.setProductId(data[PRODUCT_ID_INDEX]);
+        dto.setUserId(data[USER_ID_INDEX]);
+        dto.setProfileName(data[PROFILE_NAME_INDEX]);
+        dto.setHelpfulnessNumerator(Integer.parseInt(data[HELPFULNESS_NUMERATOR_INDEX]));
+        dto.setHelpfulnessDenominator(Integer.parseInt(data[HELPFULNESS_DENOMINATOR_INDEX]));
+        dto.setScore(Integer.parseInt(data[SCORE_INDEX]));
+        dto.setTime(Long.parseLong(data[TIME_INDEX]));
+        dto.setSummary(data[SUMMARY_INDEX]);
+        dto.setText(data[TEXT_INDEX]);
         return dto;
     }
 }
