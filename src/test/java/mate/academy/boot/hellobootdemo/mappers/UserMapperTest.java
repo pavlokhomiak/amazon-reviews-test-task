@@ -1,5 +1,8 @@
 package mate.academy.boot.hellobootdemo.mappers;
 
+import static org.mockito.Mockito.when;
+
+import java.util.List;
 import mate.academy.boot.hellobootdemo.models.ReviewDto;
 import mate.academy.boot.hellobootdemo.models.Role;
 import mate.academy.boot.hellobootdemo.models.User;
@@ -10,16 +13,14 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
-import static org.mockito.Mockito.when;
-
-import java.util.List;
 
 public class UserMapperTest {
-    private static final ReviewDto reviewDto = new ReviewDto(Long.parseLong("38"), "B001EO5QW8", "A3MGP2E1ZZ6GRB",
-            "\"Zardoz \"\"focuspuller\"\"\"", Integer.parseInt("1"), Integer.parseInt("1"),
-            Integer.parseInt("5"), Long.parseLong("1238457600"), "it's oatmeal",
-            "\"What else do you need to know? Oatmeal, instant (make it with a half cup of low-fat milk and add raisins\tnuke"
-                    + " for 90 seconds). More expensive than something. It's still just oatmeal. Mmm, convenient!\"");
+    private static final ReviewDto reviewDto = new ReviewDto(Long.parseLong("38"), "B001EO5QW8",
+            "A3MGP2E1ZZ6GRB", "\"Zardoz \"\"focuspuller\"\"\"", Integer.parseInt("1"),
+            Integer.parseInt("1"), Integer.parseInt("5"), Long.parseLong("1238457600"),
+            "it's oatmeal", "\"What else do you need to know? Oatmeal, instant (make it with a "
+            + "half cup of low-fat milk and add raisins\tnuke for 90 seconds). More expensive than "
+            + "something. It's still just oatmeal. Mmm, convenient!\"");
     private static final User expectedUser = new User();
 
     private RoleRepository roleRepository = Mockito.mock(RoleRepository.class);
