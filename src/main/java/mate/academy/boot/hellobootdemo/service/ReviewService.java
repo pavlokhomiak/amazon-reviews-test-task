@@ -1,8 +1,7 @@
 package mate.academy.boot.hellobootdemo.service;
 
-import mate.academy.boot.hellobootdemo.models.Review;
-
 import java.util.List;
+import mate.academy.boot.hellobootdemo.models.Review;
 
 public interface ReviewService {
     void add(Review review);

@@ -34,7 +34,6 @@ public class UserServiceImpl implements UserService {
         User userFromDb = userRepository.getOne(id);
         userFromDb.setProfileName(user.getProfileName());
         userFromDb.setPassword(user.getPassword());
-        userFromDb.setReviewList(user.getReviewList());
         userFromDb.setRoles(user.getRoles());
         userRepository.save(userFromDb);
     }

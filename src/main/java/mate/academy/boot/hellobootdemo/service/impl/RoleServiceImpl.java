@@ -1,12 +1,12 @@
 package mate.academy.boot.hellobootdemo.service.impl;
 
+import java.util.List;
 import mate.academy.boot.hellobootdemo.models.Role;
-import mate.academy.boot.hellobootdemo.models.User;
 import mate.academy.boot.hellobootdemo.repository.RoleRepository;
 import mate.academy.boot.hellobootdemo.service.RoleService;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+@Service
 public class RoleServiceImpl implements RoleService {
     private final RoleRepository roleRepository;
 
@@ -22,6 +22,11 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Role getById(Long id) {
         return roleRepository.getOne(id);
+    }
+
+    @Override
+    public Role getByRoleName(Role.RoleName roleName) {
+        return roleRepository.getRoleByRoleName(roleName);
     }
 
     @Override

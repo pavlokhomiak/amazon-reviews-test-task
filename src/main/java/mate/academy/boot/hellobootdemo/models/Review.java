@@ -1,5 +1,6 @@
 package mate.academy.boot.hellobootdemo.models;
 
+import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,33 +9,44 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "reviews")
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "id")
+    @Column(name = "id")
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "user")
     private User user;
-    @Column(columnDefinition = "review_id")
+
+    @Column(name = "review_id")
     private Long reviewId;
-    @Column(columnDefinition = "user_id")
-    private String userId;
-    @Column(columnDefinition = "product_id")
+
+    @Column(name = "product_id")
     private String productId;
-    @Column(columnDefinition = "profile_name")
+
+    @Column(name = "user_id")
+    private String userId;
+
+    @Column(name = "profile_name")
     private String profileName;
-    @Column(columnDefinition = "helpfulness_numerator")
+
+    @Column(name = "helpfulness_numerator")
     private int helpfulnessNumerator;
-    @Column(columnDefinition = "helpfulness_denominator")
+
+    @Column(name = "helpfulness_denominator")
     private int helpfulnessDenominator;
     private int score;
-    private Long time;
+    private LocalDateTime time;
     private String summary;
     private String text;
 }

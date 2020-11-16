@@ -1,11 +1,12 @@
 package mate.academy.boot.hellobootdemo.service.impl;
 
+import java.util.List;
 import mate.academy.boot.hellobootdemo.models.Review;
 import mate.academy.boot.hellobootdemo.repository.ReviewRepository;
 import mate.academy.boot.hellobootdemo.service.ReviewService;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+@Service
 public class ReviewServiceImpl implements ReviewService {
     private final ReviewRepository reviewRepository;
 
