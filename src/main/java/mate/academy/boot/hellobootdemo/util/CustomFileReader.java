@@ -1,6 +1,6 @@
 package mate.academy.boot.hellobootdemo.util;
 
-import java.io.BufferedReader;
+import com.opencsv.CSVReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,14 +9,15 @@ import java.util.List;
 public class CustomFileReader implements ReadFileService {
 
     @Override
-    public List<String> readFile(String filePath) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            List<String> lines = new ArrayList<>();
-            String row;
-            while ((row = reader.readLine()) != null) {
-                lines.add(row);
+    public List<String[]> readFile(String filePath) {
+        try {
+            CSVReader csvReader = new CSVReader(new FileReader(filePath));
+            List<String[]> allData = new ArrayList<>();
+            String[] nextRecord;
+            while ((nextRecord = csvReader.readNext()) != null) {
+                allData.add(nextRecord);
             }
-            return lines;
+            return allData;
         } catch (IOException e) {
             throw new RuntimeException("Can't read data from file " + filePath, e);
         }
